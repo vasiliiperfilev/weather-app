@@ -1,3 +1,3 @@
-import renderPage from './renderPage';
+import createPage from './createPage';
 
-document.querySelector('body').append(renderPage());
+createPage();
