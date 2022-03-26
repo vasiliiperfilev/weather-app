@@ -6,8 +6,8 @@ function renderPage(weatherDataObject) {
   const main = document.createElement('main');
   const topDiv = document.createElement('div');
   topDiv.classList.add('top');
-  const leftColumn = renderLeftColumn(weatherDataObject.current);
-  const rightColumn = renderRightColumn(weatherDataObject.current);
+  const leftColumn = renderLeftColumn(weatherDataObject);
+  const rightColumn = renderRightColumn(weatherDataObject);
   topDiv.append(leftColumn, rightColumn);
   main.append(topDiv);
   console.log(weatherDataObject);

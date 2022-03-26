@@ -2,16 +2,14 @@ import createDomElement from './createDomElement';
 
 function renderLeftColumn(weatherDataObject) {
   const leftColumn = createDomElement('div', {}, 'left');
-  const temp = createDomElement('p', { innerText: `${weatherDataObject.temp}` }, 'big', 'bold');
-  const weather = createDomElement(
-    'p',
-    { innerText: `${weatherDataObject.weather[0].description.toUpperCase()}` },
-    'big'
-  );
+  const temp = createDomElement('p', { innerText: weatherDataObject.temp }, 'big', 'bold');
+  const weather = createDomElement('p', { innerText: weatherDataObject.description }, 'big');
+  const city = createDomElement('p', { innerText: `${weatherDataObject.city}` }, 'default');
+  const time = createDomElement('p', { innerText: weatherDataObject.dt }, 'default');
   const icon = createDomElement(
     'img',
     {
-      src: `http://openweathermap.org/img/wn/${weatherDataObject.weather[0].icon}@2x.png`,
+      src: weatherDataObject.icon,
       height: '90',
       width: '90',
     },
@@ -23,7 +21,7 @@ function renderLeftColumn(weatherDataObject) {
   const searchBtn = createDomElement('button', { innerText: 'Search' }, 'search-btn');
   label.append(input);
   searchForm.append(label, searchBtn);
-  leftColumn.append(weather, temp, icon, searchForm);
+  leftColumn.append(weather, city, time, temp, icon, searchForm);
   return leftColumn;
 }
 
