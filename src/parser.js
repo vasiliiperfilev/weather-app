@@ -37,8 +37,8 @@ const parser = (() => {
 
   function parseForecastWeather(data) {
     return {
-      dayTemp: `${Math.round(data.temp.day)}°C`,
-      nightTemp: `${Math.round(data.temp.day)}°C`,
+      dayTemp: `${Math.round(data.temp.day) || Math.round(data.temp)}°C`,
+      nightTemp: `${Math.round(data.feels_like.day) || Math.round(data.feels_like)}°C`,
       icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
     };
   }
