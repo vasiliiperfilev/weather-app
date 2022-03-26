@@ -1,15 +1,15 @@
 import createDomElement from './createDomElement';
 
-function renderLeftColumn(weatherDataObject) {
+function renderLeftColumn(currentData) {
   const leftColumn = createDomElement('div', {}, 'left');
-  const temp = createDomElement('p', { innerText: weatherDataObject.temp }, 'big', 'bold');
-  const weather = createDomElement('p', { innerText: weatherDataObject.description }, 'big');
-  const city = createDomElement('p', { innerText: `${weatherDataObject.city}` }, 'default');
-  const time = createDomElement('p', { innerText: weatherDataObject.dt }, 'default');
+  const temp = createDomElement('p', { innerText: currentData.temp }, 'big', 'bold');
+  const weather = createDomElement('p', { innerText: currentData.description }, 'big');
+  const city = createDomElement('p', { innerText: `${currentData.city}` }, 'default');
+  const time = createDomElement('p', { innerText: currentData.dt }, 'default');
   const icon = createDomElement(
     'img',
     {
-      src: weatherDataObject.icon,
+      src: currentData.icon,
       height: '90',
       width: '90',
     },

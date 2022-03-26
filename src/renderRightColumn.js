@@ -1,8 +1,8 @@
 import createDomElement from './createDomElement';
 
-function renderRightColumn(weatherDataObject) {
+function renderRightColumn(currentData) {
   const rightColumn = createDomElement('div', {}, 'right');
-  const { humidity, feelsLike, rainChance, wind } = { ...weatherDataObject };
+  const { humidity, feelsLike, rainChance, wind } = { ...currentData };
   const details = { humidity, feelsLike, rainChance, wind };
   Object.values(details).forEach((detail) => {
     const div = createDomElement('div', { innerText: detail.text }, 'detail-box');
