@@ -6,7 +6,12 @@ import emptyDotIcon from './assets/empty-dot.png';
 function renderBottomControls() {
   const controlsDiv = createDomElement('div', {}, 'controls');
   ['Daily', 'Hourly'].forEach((time) => {
-    const timeControl = createDomElement('div', { innerText: time }, 'time-controls');
+    const timeControl = createDomElement(
+      'div',
+      { innerText: time },
+      'time-controls',
+      time.toLowerCase()
+    );
     controlsDiv.append(timeControl);
   });
   const sliderDiv = createDomElement('div', {}, 'slider-controls');

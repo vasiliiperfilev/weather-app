@@ -3,6 +3,7 @@ import { fromUnixTime, getISODay } from 'date-fns';
 import createDomElement from './createDomElement';
 import getWeekdayName from './getWeekdayName';
 import parser from './parser';
+import currentState from './currentState';
 
 function renderOneForecast(oneUnitData) {
   const oneUnitForecastDiv = createDomElement('div', {}, null);
@@ -21,22 +22,21 @@ function renderOneForecast(oneUnitData) {
   return oneUnitForecastDiv;
 }
 
-function getForecastTime(date, frequency) {
-  if (frequency === 'Daily') {
+function getForecastTime(date) {
+  if (currentState.getForecastFrequency() === 'daily') {
     return getWeekdayName(getISODay(fromUnixTime(date)));
   }
-  if (frequency === 'Hourly') {
+  if (currentState.getForecastFrequency() === 'hourly') {
     return format(fromUnixTime(date), 'h a');
   }
   return null;
 }
 
-function renderForecast(forecastData, frequency) {
+function renderForecast(forecastData) {
   const forecastDiv = createDomElement('div', {}, 'forecast');
-  forecastData.shift();
   forecastData.forEach((dayData) => {
     const oneForecast = renderOneForecast(parser.parseForecastWeather(dayData));
-    const forecastTime = getForecastTime(dayData.dt, frequency);
+    const forecastTime = getForecastTime(dayData.dt);
     const timeDiv = createDomElement('p', { innerText: forecastTime }, 'big', 'bold');
     oneForecast.prepend(timeDiv);
     forecastDiv.append(oneForecast);

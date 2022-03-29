@@ -13,7 +13,7 @@ function renderDOM(weatherDataObject) {
   const rightColumn = renderRightColumn(parser.parseCurrentWeather(weatherDataObject));
   const bottomDiv = createDomElement('div', {}, 'bottom');
   const controlsDiv = renderBottomControls();
-  const forecast = renderForecast(weatherDataObject.daily, 'Daily');
+  const forecast = renderForecast(weatherDataObject.daily);
   topDiv.append(leftColumn, rightColumn);
   bottomDiv.append(controlsDiv, forecast);
   main.append(topDiv, bottomDiv);

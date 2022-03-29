@@ -1,3 +1,5 @@
+import currentState from './currentState';
+
 const dataFetcher = (() => {
   const API_KEY = '7234a9fe0940b7ea4f15538b32fd50ac';
   let currentUnits = 'metric';
@@ -27,7 +29,9 @@ const dataFetcher = (() => {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${API_KEY}&units=${currentUnits}`
     );
-    return response.json();
+    const json = await response.json();
+    currentState.setData(json);
+    return json;
   }
 
   const getWeatherDataSafe = handleError(fetchData);
