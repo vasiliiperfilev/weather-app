@@ -1,0 +1,7 @@
+.forecast-card {
+  display: none;
+}
+
+.forecast-card:nth-child(-n + 8) {
+  display: block;
+}

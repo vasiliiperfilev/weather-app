@@ -17,14 +17,13 @@ function renderBottomControls() {
   const sliderDiv = createDomElement('div', {}, 'slider-controls');
   const sliderControls = {
     'arrow-left': leftArrowIcon,
-    dot1: emptyDotIcon,
-    dot2: emptyDotIcon,
-    dot3: emptyDotIcon,
+    dot: emptyDotIcon,
     'arrow-right': rightArrowIcon,
   };
   Object.entries(sliderControls).forEach(([domClass, icon]) => {
     const elementDiv = createDomElement('img', { src: icon }, domClass);
     sliderDiv.append(elementDiv);
+    if (domClass === 'dot') sliderDiv.append(elementDiv.cloneNode(), elementDiv.cloneNode());
   });
   controlsDiv.append(sliderDiv);
   return controlsDiv;

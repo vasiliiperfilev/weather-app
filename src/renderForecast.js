@@ -6,7 +6,7 @@ import parser from './parser';
 import currentState from './currentState';
 
 function renderOneForecast(oneUnitData) {
-  const oneUnitForecastDiv = createDomElement('div', {}, null);
+  const oneUnitForecastDiv = createDomElement('div', {}, 'forecast-card');
   const dayTemp = createDomElement('p', { innerText: oneUnitData.dayTemp }, 'big', 'bold');
   const nightTemp = createDomElement('p', { innerText: oneUnitData.nightTemp }, 'default');
   const icon = createDomElement(

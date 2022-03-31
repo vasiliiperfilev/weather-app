@@ -1,10 +1,11 @@
 import createDomElement from './createDomElement';
+import currentState from './currentState';
 
 function renderLeftColumn(currentData) {
   const leftColumn = createDomElement('div', {}, 'left');
   const temp = createDomElement('p', { innerText: currentData.temp }, 'big', 'bold');
   const weather = createDomElement('p', { innerText: currentData.description }, 'big');
-  const city = createDomElement('p', { innerText: `${currentData.city}` }, 'default');
+  const city = createDomElement('p', { innerText: `${currentState.getCity()}` }, 'default');
   const time = createDomElement('p', { innerText: currentData.dt }, 'default');
   const icon = createDomElement(
     'img',
