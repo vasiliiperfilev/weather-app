@@ -5,7 +5,7 @@ import renderLeftColumn from './renderLeftColumn';
 import renderRightColumn from './renderRightColumn';
 import renderForecast from './renderForecast';
 
-function renderDOM(weatherDataObject) {
+function renderPage(weatherDataObject) {
   document.querySelector('body').innerHTML = '';
   const main = document.createElement('main');
   const topDiv = createDomElement('div', {}, 'top');
@@ -21,4 +21,4 @@ function renderDOM(weatherDataObject) {
   return main;
 }
 
-export default renderDOM;
+export default renderPage;

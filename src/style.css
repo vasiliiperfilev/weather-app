@@ -5,3 +5,11 @@
 .forecast-card:nth-child(-n + 8) {
   display: block;
 }
+
+.marked {
+  background-image: url(./assets/filled-dot.png);
+}
+
+.hidden {
+  display: none !important;
+}

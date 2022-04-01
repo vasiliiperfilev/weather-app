@@ -27,13 +27,23 @@ const currentState = (() => {
     data = newData;
   }
 
+  function getForecastData() {
+    return data[forecastFrequency];
+  }
+
+  function setForecastData(newData) {
+    data[forecastFrequency] = newData;
+  }
+
   return {
     getCity,
     getForecastFrequency,
     getData,
+    getForecastData,
     setCity,
     setForecastFrequency,
     setData,
+    setForecastData,
   };
 })();
 

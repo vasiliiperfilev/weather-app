@@ -1,6 +1,6 @@
 import currentState from './currentState';
 
-const dataFetcher = (() => {
+const fetcher = (() => {
   const API_KEY = '7234a9fe0940b7ea4f15538b32fd50ac';
   let currentUnits = 'metric';
 
@@ -42,4 +42,4 @@ const dataFetcher = (() => {
   };
 })();
 
-export default dataFetcher;
+export default fetcher;

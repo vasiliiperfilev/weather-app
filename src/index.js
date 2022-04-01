@@ -1,4 +1,4 @@
-import createPage from './createPage';
+import setupPage from './setupPage';
 import './style.css';
 
-createPage();
+setupPage();
