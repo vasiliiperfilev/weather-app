@@ -1,9 +1,9 @@
 import { format } from 'date-fns';
 import fromUnixTime from 'date-fns/fromUnixTime';
-import humidityIcon from './assets/humidity.png';
-import thermoIcon from './assets/thermometer.png';
-import rainIcon from './assets/rain.png';
-import windIcon from './assets/wind.png';
+import humidityIcon from '../../assets/humidity.png';
+import thermoIcon from '../../assets/thermometer.png';
+import rainIcon from '../../assets/rain.png';
+import windIcon from '../../assets/wind.png';
 
 const parser = (() => {
   function parseCurrentWeather(data) {

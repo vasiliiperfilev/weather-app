@@ -1,5 +1,5 @@
-import createDomElement from './createDomElement';
-import currentState from './currentState';
+import createDomElement from '../helpers/createDomElement';
+import currentState from '../main/currentState';
 
 function renderLeftColumn(currentData) {
   const leftColumn = createDomElement('div', {}, 'left');

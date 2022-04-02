@@ -1,5 +1,5 @@
-import parser from './parser';
-import createDomElement from './createDomElement';
+import parser from '../data/parser';
+import createDomElement from '../helpers/createDomElement';
 import renderBottomControls from './renderBottomControls';
 import renderLeftColumn from './renderLeftColumn';
 import renderRightColumn from './renderRightColumn';
@@ -17,7 +17,6 @@ function renderPage(weatherDataObject) {
   topDiv.append(leftColumn, rightColumn);
   bottomDiv.append(controlsDiv, forecast);
   main.append(topDiv, bottomDiv);
-  console.log(weatherDataObject);
   return main;
 }
 

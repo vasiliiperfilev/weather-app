@@ -1,5 +1,5 @@
-import currentState from './currentState';
-import renderForecast from './renderForecast';
+import currentState from '../main/currentState';
+import renderForecast from '../render/renderForecast';
 
 const slider = (() => {
   let cardsIndex = 0;

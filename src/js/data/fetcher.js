@@ -1,4 +1,4 @@
-import currentState from './currentState';
+import currentState from '../main/currentState';
 
 const fetcher = (() => {
   const API_KEY = '7234a9fe0940b7ea4f15538b32fd50ac';
@@ -12,15 +12,7 @@ const fetcher = (() => {
     currentUnits = units;
   }
 
-  function handleError(fn) {
-    return async function displayError(...params) {
-      return fn(...params).catch(() => {
-        console.log('City not found or server is down!');
-      });
-    };
-  }
-
-  async function fetchData(city) {
+  async function fetchData(city = currentState.getDefaultCity()) {
     const coordResponse = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=${currentUnits}`
     );
@@ -31,14 +23,13 @@ const fetcher = (() => {
     );
     const json = await response.json();
     currentState.setData(json);
+    currentState.setCity(city);
     return json;
   }
-
-  const getWeatherDataSafe = handleError(fetchData);
   return {
     getUnits,
     setUnits,
-    getWeatherDataSafe,
+    fetchData,
   };
 })();
 

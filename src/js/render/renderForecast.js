@@ -1,9 +1,9 @@
 import format from 'date-fns/format';
 import { fromUnixTime, getISODay } from 'date-fns';
-import createDomElement from './createDomElement';
-import getWeekdayName from './getWeekdayName';
-import parser from './parser';
-import currentState from './currentState';
+import createDomElement from '../helpers/createDomElement';
+import getWeekdayName from '../helpers/getWeekdayName';
+import parser from '../data/parser';
+import currentState from '../main/currentState';
 
 function renderOneForecast(oneUnitData) {
   const oneUnitForecastDiv = createDomElement('div', {}, 'forecast-card');

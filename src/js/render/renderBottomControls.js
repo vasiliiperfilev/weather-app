@@ -1,7 +1,7 @@
-import createDomElement from './createDomElement';
-import leftArrowIcon from './assets/arrow-left.png';
-import rightArrowIcon from './assets/arrow-right.png';
-import emptyDotIcon from './assets/empty-dot.png';
+import createDomElement from '../helpers/createDomElement';
+import leftArrowIcon from '../../assets/arrow-left.png';
+import rightArrowIcon from '../../assets/arrow-right.png';
+import emptyDotIcon from '../../assets/empty-dot.png';
 
 function renderSliderControls() {
   const sliderControls = createDomElement('div', {}, 'slider-controls');

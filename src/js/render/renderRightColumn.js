@@ -1,4 +1,4 @@
-import createDomElement from './createDomElement';
+import createDomElement from '../helpers/createDomElement';
 
 function renderRightColumn(currentData) {
   const rightColumn = createDomElement('div', {}, 'right');

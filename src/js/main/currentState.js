@@ -1,10 +1,15 @@
 const currentState = (() => {
   let city = 'Coquitlam';
+  const defaultCity = 'Coquitlam';
   let forecastFrequency = 'daily';
   let data = null;
 
   function getCity() {
     return city;
+  }
+
+  function getDefaultCity() {
+    return defaultCity;
   }
 
   function setCity(newCity) {
@@ -37,6 +42,7 @@ const currentState = (() => {
 
   return {
     getCity,
+    getDefaultCity,
     getForecastFrequency,
     getData,
     getForecastData,

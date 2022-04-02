@@ -1,16 +1,24 @@
-import fetcher from './fetcher';
-import renderPage from './renderPage';
+import fetcher from '../data/fetcher';
+import renderPage from '../render/renderPage';
 import currentState from './currentState';
-import slider from './slider';
-import changeForecast from './changeForecast';
+import slider from '../listeners/slider';
+import changeForecast from '../listeners/changeForecast';
 
-async function setupPage(city = 'Coquitlam') {
-  const data = await fetcher.getWeatherDataSafe(city);
+function handleError(fn) {
+  return async function displayError(...params) {
+    return fn(...params).catch(() => {
+      alert('City not found');
+      return fetcher.fetchData(currentState.getCity());
+    });
+  };
+}
+
+async function setupPage(city = currentState.getDefaultCity()) {
+  const data = await handleError(fetcher.fetchData)(city);
   document.querySelector('body').append(renderPage(data));
   document.querySelector('.search-btn').addEventListener('click', (e) => {
     e.preventDefault();
     const newCity = document.querySelector('#city').value;
-    currentState.setCity(newCity);
     setupPage(newCity);
   });
   document.querySelector('.time-controls.daily').addEventListener('click', changeForecast);
