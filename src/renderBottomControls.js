@@ -5,9 +5,17 @@ import emptyDotIcon from './assets/empty-dot.png';
 
 function renderSliderControls() {
   const sliderControls = createDomElement('div', {}, 'slider-controls');
-  const arrowLeft = createDomElement('img', { src: leftArrowIcon }, 'arrow-left');
-  const arrowRight = createDomElement('img', { src: rightArrowIcon }, 'arrow-right');
-  const emptyDot = createDomElement('img', { src: emptyDotIcon }, 'dot');
+  const arrowLeft = createDomElement(
+    'img',
+    { src: leftArrowIcon, height: '30', width: '30' },
+    'arrow-left'
+  );
+  const arrowRight = createDomElement(
+    'img',
+    { src: rightArrowIcon, height: '30', width: '30' },
+    'arrow-right'
+  );
+  const emptyDot = createDomElement('img', { src: emptyDotIcon, height: '20', width: '20' }, 'dot');
   const filledDot = emptyDot.cloneNode();
   filledDot.classList.add('marked');
   sliderControls.append(arrowLeft, filledDot, emptyDot, emptyDot.cloneNode(), arrowRight);
@@ -21,8 +29,10 @@ function renderBottomControls() {
       'div',
       { innerText: time },
       'time-controls',
-      time.toLowerCase()
+      time.toLowerCase(),
+      'big'
     );
+    if (time === 'Daily') timeControl.classList.add('selected');
     controlsDiv.append(timeControl);
   });
   const sliderControls = renderSliderControls();

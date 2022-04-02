@@ -14,6 +14,8 @@ function changeForecast() {
   currentState.setForecastFrequency(this.textContent.toLowerCase());
   const forecast = renderForecast(currentState.getData()[currentState.getForecastFrequency()]);
   const bottom = document.querySelector('.bottom');
+  bottom.querySelector('.selected').classList.remove('selected');
+  this.classList.add('selected');
   bottom.removeChild(document.querySelector('.forecast'));
   bottom.append(forecast);
   changeSliderDisplay();

@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import humidityIcon from './assets/humidity.png';
 import thermoIcon from './assets/thermometer.png';
@@ -10,7 +11,7 @@ const parser = (() => {
       city: data.city,
       temp: `${Math.round(data.current.temp)}°C`,
       description: `${data.current.weather[0].description.toUpperCase()}`,
-      dt: `${fromUnixTime(data.current.dt)}`,
+      dt: `${format(fromUnixTime(data.current.dt), 'Pp')}`,
       icon: `http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`,
       humidity: {
         text: 'Humidity',
@@ -24,7 +25,7 @@ const parser = (() => {
       },
       rainChance: {
         text: 'Chance of rain',
-        value: `${data.hourly[0].pop * 100}%`,
+        value: `${Math.round(data.hourly[0].pop * 100)}%`,
         icon: rainIcon,
       },
       wind: {
