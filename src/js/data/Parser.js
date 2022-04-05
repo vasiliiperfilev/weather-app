@@ -5,8 +5,8 @@ import thermoIcon from '../../assets/thermometer.png';
 import rainIcon from '../../assets/rain.png';
 import windIcon from '../../assets/wind.png';
 
-const parser = (() => {
-  function parseCurrentWeather(data) {
+class Parser {
+  static parseCurrentWeather(data) {
     return {
       city: data.city,
       temp: `${Math.round(data.current.temp)}°C`,
@@ -36,17 +36,13 @@ const parser = (() => {
     };
   }
 
-  function parseForecastWeather(data) {
+  static parseForecastWeather(data) {
     return {
       dayTemp: `${Math.round(data.temp.day) || Math.round(data.temp)}°C`,
       nightTemp: `${Math.round(data.feels_like.day) || Math.round(data.feels_like)}°C`,
       icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
     };
   }
-  return {
-    parseCurrentWeather,
-    parseForecastWeather,
-  };
-})();
+}
 
-export default parser;
+export default Parser;

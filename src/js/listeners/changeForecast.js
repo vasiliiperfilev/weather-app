@@ -1,9 +1,9 @@
-import currentState from '../main/currentState';
+import CurrentState from '../main/CurrentState';
 import renderForecast from '../render/renderForecast';
 
 function changeSliderDisplay() {
   const controls = document.querySelector('.slider-controls');
-  if (currentState.getForecastFrequency() === 'hourly') {
+  if (CurrentState.getForecastFrequency() === 'hourly') {
     controls.classList.remove('hidden');
   } else {
     controls.classList.add('hidden');
@@ -11,8 +11,8 @@ function changeSliderDisplay() {
 }
 
 function changeForecast() {
-  currentState.setForecastFrequency(this.textContent.toLowerCase());
-  const forecast = renderForecast(currentState.getData()[currentState.getForecastFrequency()]);
+  CurrentState.setForecastFrequency(this.textContent.toLowerCase());
+  const forecast = renderForecast(CurrentState.getData()[CurrentState.getForecastFrequency()]);
   const bottom = document.querySelector('.bottom');
   bottom.querySelector('.selected').classList.remove('selected');
   this.classList.add('selected');

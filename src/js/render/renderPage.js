@@ -1,4 +1,4 @@
-import parser from '../data/parser';
+import Parser from '../data/Parser';
 import createDomElement from '../helpers/createDomElement';
 import renderBottomControls from './renderBottomControls';
 import renderLeftColumn from './renderLeftColumn';
@@ -9,8 +9,8 @@ function renderPage(weatherDataObject) {
   document.querySelector('body').innerHTML = '';
   const main = document.createElement('main');
   const topDiv = createDomElement('div', {}, 'top');
-  const leftColumn = renderLeftColumn(parser.parseCurrentWeather(weatherDataObject));
-  const rightColumn = renderRightColumn(parser.parseCurrentWeather(weatherDataObject));
+  const leftColumn = renderLeftColumn(Parser.parseCurrentWeather(weatherDataObject));
+  const rightColumn = renderRightColumn(Parser.parseCurrentWeather(weatherDataObject));
   const bottomDiv = createDomElement('div', {}, 'bottom');
   const controlsDiv = renderBottomControls();
   const forecast = renderForecast(weatherDataObject.daily);

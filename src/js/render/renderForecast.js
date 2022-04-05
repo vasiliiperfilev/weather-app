@@ -2,8 +2,8 @@ import format from 'date-fns/format';
 import { fromUnixTime, getISODay } from 'date-fns';
 import createDomElement from '../helpers/createDomElement';
 import getWeekdayName from '../helpers/getWeekdayName';
-import parser from '../data/parser';
-import currentState from '../main/currentState';
+import Parser from '../data/Parser';
+import CurrentState from '../main/CurrentState';
 
 function renderOneForecast(oneUnitData) {
   const oneUnitForecastDiv = createDomElement('div', {}, 'forecast-card');
@@ -23,10 +23,10 @@ function renderOneForecast(oneUnitData) {
 }
 
 function getForecastTime(date) {
-  if (currentState.getForecastFrequency() === 'daily') {
+  if (CurrentState.getForecastFrequency() === 'daily') {
     return getWeekdayName(getISODay(fromUnixTime(date)));
   }
-  if (currentState.getForecastFrequency() === 'hourly') {
+  if (CurrentState.getForecastFrequency() === 'hourly') {
     return format(fromUnixTime(date), 'h a');
   }
   return null;
@@ -35,7 +35,7 @@ function getForecastTime(date) {
 function renderForecast(forecastData) {
   const forecastDiv = createDomElement('div', {}, 'forecast');
   forecastData.forEach((dayData) => {
-    const oneForecast = renderOneForecast(parser.parseForecastWeather(dayData));
+    const oneForecast = renderOneForecast(Parser.parseForecastWeather(dayData));
     const forecastTime = getForecastTime(dayData.dt);
     const timeDiv = createDomElement('p', { innerText: forecastTime }, 'big', 'bold');
     oneForecast.prepend(timeDiv);
