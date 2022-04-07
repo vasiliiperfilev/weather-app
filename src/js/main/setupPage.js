@@ -16,9 +16,10 @@ async function safeFetch(city = CurrentState.getDefaultCity()) {
 async function setupPage(city = CurrentState.getDefaultCity()) {
   const data = await safeFetch(city);
   document.querySelector('body').append(renderPage(data));
-  document.querySelector('.search-btn').addEventListener('click', (e) => {
+  document.querySelector('.left form').addEventListener('submit', (e) => {
     e.preventDefault();
-    const newCity = document.querySelector('#city').value;
+    let newCity = document.querySelector('#city').value.toLowerCase();
+    newCity = newCity[0].toUpperCase() + newCity.slice(1);
     setupPage(newCity);
   });
   document.querySelector('.time-controls.daily').addEventListener('click', changeForecast);

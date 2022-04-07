@@ -20,10 +20,17 @@ function renderLeftColumn(currentData) {
   const label = createDomElement('label', { for: 'city' }, null);
   const input = createDomElement(
     'input',
-    { type: 'text', id: 'city', name: 'city', placeholder: 'Search Location...' },
+    {
+      type: 'text',
+      id: 'city',
+      name: 'city',
+      placeholder: 'Search Location...',
+      pattern: '[a-zA-Z]+',
+      title: 'Please, use letters only',
+    },
     null
   );
-  const searchBtn = createDomElement('button', {}, 'search-btn');
+  const searchBtn = createDomElement('button', { type: 'submit' }, 'search-btn');
   label.append(input);
   searchForm.append(label, searchBtn);
   leftColumn.append(weather, city, time, temp, icon, searchForm);
