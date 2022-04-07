@@ -7,8 +7,8 @@ import changeForecast from '../listeners/changeForecast';
 async function safeFetch(city = CurrentState.getDefaultCity()) {
   try {
     return await Fetcher.fetchData(city);
-  } catch {
-    alert('City not found');
+  } catch (e) {
+    alert(e.message);
     return Fetcher.fetchData(CurrentState.getCity());
   }
 }
